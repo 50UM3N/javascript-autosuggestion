@@ -19,6 +19,8 @@ imp.addEventListener('input', function (e) {
             a.appendChild(b);
             c++;
         }
+        else if (c>=6)
+            break;
     });
 });
 imp.addEventListener('keydown', (e) => {
