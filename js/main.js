@@ -9,19 +9,21 @@ imp.addEventListener('input', function (e) {
     a.setAttribute("id", "aslist");
     a.setAttribute('class', 'aslist');
     document.getElementsByClassName('asinputbox')[0].parentNode.appendChild(a);
-    cities.forEach(val => {
-        if (val.name.slice(0, this.value.length).toLocaleLowerCase() == this.value.toLocaleLowerCase() && c < 6) {
+    for (let i = 0;  i< cities.length; i++) {
+        if (cities[i].name.slice(0, this.value.length).toLocaleLowerCase() == this.value.toLocaleLowerCase() && c < 6) {
             b = document.createElement("div");
-            b.innerHTML = "<strong>" + val.name.slice(0, this.value.length) + "</strong>" + val.name.slice(this.value.length) + "<input type='hidden' value='" + val.name + "'>";
+            b.innerHTML = "<strong>" + cities[i].name.slice(0, this.value.length) + "</strong>" + cities[i].name.slice(this.value.length) + "<input type='hidden' value='" + cities[i].name + "'>";
             b.addEventListener("click", function (e) {
                 imp.value = this.getElementsByTagName('input')[0].value;
             });
             a.appendChild(b);
             c++;
         }
-        else if (c>=6)
+        else if (c>=5){
+            console.log("break");
             break;
-    });
+        }
+    }
 });
 imp.addEventListener('keydown', (e) => {
     let x = document.getElementById('aslist');
