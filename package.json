@@ -1,0 +1,25 @@
+{
+  "name": "autosuggestion",
+  "version": "1.0.0",
+  "description": "simple javascript for autosuggestion search bar",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/50UM3N/javascript-autosuggestion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/50UM3N/javascript-autosuggestion/issues"
+  },
+  "homepage": "https://github.com/50UM3N/javascript-autosuggestion#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
