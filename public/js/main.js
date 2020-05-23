@@ -6,7 +6,7 @@ imp.addEventListener('input', function (e) {
     let a, b, c = 0, d = this.value;
     if (!this.value) return;
     a = document.createElement('div');
-    a.setAttribute("id", "aslist");
+    a.setAttribute('id', 'aslist');
     a.setAttribute('class', 'aslist');
     document.getElementsByClassName('asinputbox')[0].parentNode.appendChild(a);
     fetch('/', {
@@ -15,19 +15,23 @@ imp.addEventListener('input', function (e) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({
-            data: d
-        })
-    }).then(res => res.json()).then(data => {
-        for (let i = 0; i < data.length; i++) {
-            b = document.createElement("div");
-            b.innerHTML = "<strong>" + data[i].name.slice(0, d.length) + "</strong>" + data[i].name.slice(d.length) + "<input type='hidden' value='" + data[i].name + "'>";
-            b.addEventListener("click", function (e) {
-                imp.value = this.getElementsByTagName('input')[0].value;
-            });
-            a.appendChild(b);
-        }
+        body: JSON.stringify({ data: d })
     })
+        .then(res => {
+            if (res.status >= 200 && res.status < 300)
+                return Promise.resolve(res.json());
+            else
+                return Promise.reject(new Error(res.statusText));
+        })
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                b = document.createElement('div');
+                b.innerHTML = "<strong>" + data[i].name.slice(0, d.length) + "</strong>" + data[i].name.slice(d.length) + "<input type='hidden' value='" + data[i].name + "'>";
+                b.addEventListener('click', function () { imp.value = this.getElementsByTagName('input')[0].value; });
+                a.appendChild(b);
+            }
+        })
+        .catch(err => console.log('somthing error ' + err));
     /*for (let i = 0;  i< cities.length; i++) {
         if (cities[i].name.slice(0, this.value.length).toLocaleLowerCase() == this.value.toLocaleLowerCase() && c < 6) {
             b = document.createElement("div");
