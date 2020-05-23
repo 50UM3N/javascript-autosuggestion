@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const d = require('./cities');
 app.use(express.static('public'));
-app.listen(3000, (e) => {
-    console.log('server started');
+const port =process.env.PORT || 3000;
+app.listen(port, (e) => {
+    console.log('server started' + port);
 });
 app.use(express.json());
 app.post('/', (req, res) => {

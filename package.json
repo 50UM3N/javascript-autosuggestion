@@ -1,13 +1,10 @@
 {
-  "homepage": "https://50UM3N.github.io/javascript-autosuggestion",
   "name": "autosuggestion",
   "version": "1.0.0",
   "description": "simple javascript for autosuggestion search bar",
   "main": "index.js",
   "scripts": {
-
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build"
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +15,8 @@
   "bugs": {
     "url": "https://github.com/50UM3N/javascript-autosuggestion/issues"
   },
-  
+  "homepage": "https://github.com/50UM3N/javascript-autosuggestion#readme",
   "devDependencies": {
-    "gh-pages": "^2.2.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
